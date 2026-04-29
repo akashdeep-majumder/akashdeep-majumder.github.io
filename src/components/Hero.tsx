@@ -33,7 +33,7 @@ export default function Hero() {
             View Projects
           </a>
           <a
-            href="#contact"
+            href="mailto:akashdeepmajumder085@gmail.com"
             className="px-6 py-3 rounded-full border border-zinc-300 dark:border-zinc-700 font-medium hover:border-indigo-500 hover:text-indigo-500 transition-colors"
           >
             Get in Touch

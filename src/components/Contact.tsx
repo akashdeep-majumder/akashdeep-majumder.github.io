@@ -39,7 +39,9 @@ export default function Contact() {
         </p>
 
         <a
-          href="mailto:akashdeepmajumder085@gmail.com"
+          href="https://www.linkedin.com/in/akashdeep-majumder/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block px-8 py-3 rounded-full bg-indigo-500 text-white font-medium hover:bg-indigo-600 transition-colors mb-12"
         >
           Say Hello
