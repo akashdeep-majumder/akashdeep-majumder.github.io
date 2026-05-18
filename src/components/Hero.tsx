@@ -22,7 +22,7 @@ export default function Hero() {
           Akashdeep Majumder
         </h1>
         <p className="text-xl text-zinc-500 dark:text-zinc-400 mb-10 max-w-xl mx-auto">
-          Software Engineer &mdash; real-time systems, robotics interfaces, and full-stack web.
+          Frontend Engineer &mdash; real-time systems, robotics interfaces, and full-stack web.
         </p>
 
         <div className="flex gap-4 flex-wrap justify-center">

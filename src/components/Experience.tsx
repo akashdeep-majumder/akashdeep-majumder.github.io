@@ -1,12 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const roles = [
   {
     company: "Thedush Robotics",
     role: "Software Engineer",
     period: "Jun 2023 – Apr 2026",
+    recognition: {
+      title: "Mighty Owleyes",
+      caption: "For someone with deep wisdom and foresight",
+      image: "/thedush-award.jpeg",
+    },
     projects: [
       {
         name: "ONIX – Robot Telemetry & Visualization",
@@ -76,7 +82,7 @@ function ProjectCard({ project }: { project: (typeof roles)[0]["projects"][0] })
 
   return (
     <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
-      <div className="h-1 bg-gradient-to-r from-indigo-500 to-purple-500" />
+      <div className="h-1 bg-linear-to-r from-indigo-500 to-purple-500" />
       <div className="p-5">
         <h4 className="font-semibold mb-2">{project.name}</h4>
         <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-3">
@@ -120,6 +126,8 @@ function ProjectCard({ project }: { project: (typeof roles)[0]["projects"][0] })
 }
 
 export default function Experience() {
+  const [awardOpen, setAwardOpen] = useState(false);
+
   return (
     <section id="experience" className="py-24 px-6 bg-zinc-50 dark:bg-zinc-950">
       <div className="max-w-5xl mx-auto">
@@ -144,6 +152,48 @@ export default function Experience() {
                   <ProjectCard key={p.name} project={p} />
                 ))}
               </div>
+
+              {"recognition" in r && r.recognition && (
+                <>
+                  <div className="mt-4 flex items-center gap-4 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                    <button
+                      onClick={() => setAwardOpen(true)}
+                      className="shrink-0 w-12 rounded-lg overflow-hidden ring-1 ring-zinc-200 dark:ring-zinc-700 cursor-zoom-in transition-transform hover:scale-105"
+                    >
+                      <Image
+                        src={r.recognition.image}
+                        alt={r.recognition.title}
+                        width={48}
+                        height={65}
+                        className="w-full h-auto"
+                      />
+                    </button>
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400 mb-1">Recognition</p>
+                      <p className="font-semibold text-sm">{r.recognition.title}</p>
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400">{r.recognition.caption}</p>
+                      <p className="text-xs text-zinc-400 mt-0.5">— Thedush Robotics</p>
+                    </div>
+                  </div>
+
+                  {awardOpen && (
+                    <div
+                      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+                      onClick={() => setAwardOpen(false)}
+                    >
+                      <div className="relative max-h-[85vh] w-auto rounded-2xl overflow-hidden shadow-2xl">
+                        <Image
+                          src={r.recognition.image}
+                          alt={r.recognition.title}
+                          width={340}
+                          height={460}
+                          className="h-[85vh] w-auto object-contain"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
 
               {i < roles.length - 1 && (
                 <div className="mt-14 border-t border-zinc-200 dark:border-zinc-800" />

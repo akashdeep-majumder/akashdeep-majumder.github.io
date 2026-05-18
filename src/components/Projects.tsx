@@ -1,10 +1,23 @@
-const featured = {
-  title: "Cricket Scoring App",
-  description:
-    "A full-featured cricket tournament manager. The goal: give a friend a tool to run local tournaments end-to-end — create a tournament, set up teams, build lineups, and score ball by ball. A standout feature lets organisers upload a sponsor video per tournament; it plays automatically between scoring intervals, so the app doubles as a simple ad platform for local events. Ships as a Windows .exe via Electron with a SQLite-backed database and a real-time scoreboard over Socket.IO.",
-  tags: ["Electron.js", "TypeScript", "React", "Tailwind CSS", "Express.js", "SQLite", "Socket.IO"],
-  github: "https://github.com/akashdeep-majumder/scoring_app",
-};
+const featured = [
+  {
+    title: "Adda – Social Media App",
+    description:
+      "Full-stack MERN social media app. JWT auth via HTTP-only cookies, Zod-validated Express REST API, and MongoDB on the backend. Next.js 16 App Router frontend with Redux Toolkit for optimistic UI (instant like/comment updates with silent rollback), IntersectionObserver infinite scroll, and Tailwind CSS v4 design tokens for a single-override light/dark theme. Deployed on Vercel + Render.",
+    tags: ["Next.js 16", "React", "TypeScript", "Tailwind CSS v4", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "JWT", "Zod"],
+    github: "https://github.com/akashdeep-majumder/social-media-mern",
+    live: "https://project-adda.vercel.app",
+    note: null,
+  },
+  {
+    title: "Cricket Scoring App",
+    description:
+      "A full-featured cricket tournament manager. The goal: give a friend a tool to run local tournaments end-to-end — create a tournament, set up teams, build lineups, and score ball by ball. A standout feature lets organisers upload a sponsor video per tournament; it plays automatically between scoring intervals, so the app doubles as a simple ad platform for local events. Ships as a Windows .exe via Electron with a SQLite-backed database and a real-time scoreboard over Socket.IO.",
+    tags: ["Electron.js", "TypeScript", "React", "Tailwind CSS", "Express.js", "SQLite", "Socket.IO"],
+    github: "https://github.com/akashdeep-majumder/scoring_app",
+    live: null,
+    note: "vibe-coded with AI",
+  },
+];
 
 const others = [
   {
@@ -47,49 +60,64 @@ export default function Projects() {
           <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-4">
             Featured
           </p>
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:border-indigo-400 transition-colors">
-            <div className="h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500" />
-            <div className="p-8">
-              <div className="mb-4">
-                <h3 className="text-xl font-bold">{featured.title}</h3>
+          <div className="flex flex-col gap-4">
+            {featured.map((p) => (
+              <div key={p.title} className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:border-indigo-400 transition-colors">
+                <div className="h-1.5 bg-linear-to-r from-indigo-500 to-purple-500" />
+                <div className="p-8">
+                  <h3 className="text-xl font-bold mb-4">{p.title}</h3>
+                  <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5 max-w-2xl">
+                    {p.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {p.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-0.5 text-xs rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-indigo-500 transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                      </svg>
+                      View on GitHub
+                    </a>
+                    {p.live && (
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-indigo-500 transition-colors"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        Live Demo
+                      </a>
+                    )}
+                    {p.note && <span className="text-xs text-zinc-400">· {p.note}</span>}
+                  </div>
+                </div>
               </div>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5 max-w-2xl">
-                {featured.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {featured.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-0.5 text-xs rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="flex items-center gap-4">
-                <a
-                  href={featured.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-indigo-500 transition-colors"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                  </svg>
-                  View on GitHub
-                </a>
-                <span className="text-xs text-zinc-400">· vibe-coded with AI</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Others */}
         <div className="mb-4">
           <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
-            Earlier Work
+            Other Projects
           </p>
-          <p className="text-xs text-zinc-400 mt-1">Projects from when I was starting out.</p>
+          <p className="text-xs text-zinc-400 mt-1">Learning projects and earlier work.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {others.map((p) => (
@@ -97,7 +125,7 @@ export default function Projects() {
               key={p.title}
               className="flex flex-col bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:border-indigo-400 transition-colors"
             >
-              <div className="h-1 bg-gradient-to-r from-indigo-500 to-purple-500" />
+              <div className="h-1 bg-linear-to-r from-indigo-500 to-purple-500" />
               <div className="flex flex-col flex-1 p-5">
                 <h3 className="font-semibold mb-2 leading-tight">{p.title}</h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed flex-1 mb-4">

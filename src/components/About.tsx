@@ -19,17 +19,17 @@ export default function About() {
         <div>
           <h2 className="text-3xl font-bold mb-6">About Me</h2>
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
-            Frontend engineer with 3+ years of experience building real-time
-            interfaces for robotics systems. At Thedush I shipped a 3D robot
-            telemetry visualizer, a Warehouse Management System for the Indian
-            Army, a robot configuration builder, and more &mdash; all in
-            production, all under tight timelines.
+            Frontend-focused engineer with 3+ years building high-performance,
+            real-time interfaces for robotics systems. At Thedush I shipped a 3D
+            AMR telemetry visualizer, a Warehouse Management System for the Indian
+            Army, and a robot configuration builder &mdash; all in production, all
+            under tight timelines.
           </p>
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-8">
-            My focus is the frontend &mdash; React, Redux, Three.js, and real-time
-            data over WebSockets. I reach into the backend (FastAPI, WebSockets,
-            ROS2) when the work calls for it, but the interface is where I spend
-            most of my time and attention.
+            Deep expertise in React, Redux Toolkit, and React Three Fiber. I reach
+            into the backend &mdash; FastAPI, Node.js, WebSockets, ROS2 &mdash;
+            when the system demands it, but the interface is where I spend most of
+            my time and attention.
           </p>
           <a
             href="/resume.pdf"
