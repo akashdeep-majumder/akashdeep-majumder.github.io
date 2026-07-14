@@ -19,8 +19,77 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  /* offset anchor jumps for the fixed navbar */
+  scroll-padding-top: 4rem;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+/*
+ * Scroll reveal.
+ * Gated on `.js` (added by an inline script before paint) so content stays
+ * fully visible when JavaScript is unavailable.
+ */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Subtle, slow-drifting hero glow — barely noticeable background motion. */
+@keyframes hero-glow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(3%, -5%, 0) scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+.hero-glow {
+  animation: hero-glow 24s ease-in-out infinite;
+}
+
+/* Gentle scroll-cue nudge (replaces the sharp bounce). */
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+.animate-nudge {
+  animation: nudge 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-glow,
+  .animate-nudge {
+    animation: none !important;
+  }
 }

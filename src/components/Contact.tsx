@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const socials = [
   {
     label: "GitHub",
@@ -31,7 +33,7 @@ const socials = [
 export default function Contact() {
   return (
     <section id="contact" className="py-24 px-6 bg-zinc-50 dark:bg-zinc-950">
-      <div className="max-w-xl mx-auto text-center">
+      <Reveal className="max-w-xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
         <p className="text-zinc-500 dark:text-zinc-400 mb-10">
           Open to new opportunities. Whether you have a role, a project, or
@@ -42,7 +44,7 @@ export default function Contact() {
           href="https://www.linkedin.com/in/akashdeep-majumder/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-8 py-3 rounded-full bg-indigo-500 text-white font-medium hover:bg-indigo-600 transition-colors mb-12"
+          className="inline-block px-8 py-3 rounded-full bg-indigo-500 text-white font-medium hover:bg-indigo-600 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 mb-12"
         >
           Say Hello
         </a>
@@ -55,13 +57,13 @@ export default function Contact() {
               target={s.href.startsWith("mailto") ? undefined : "_blank"}
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="text-zinc-500 hover:text-indigo-500 transition-colors"
+              className="text-zinc-500 hover:text-indigo-500 hover:-translate-y-0.5 transition-all duration-200"
             >
               {s.icon}
             </a>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

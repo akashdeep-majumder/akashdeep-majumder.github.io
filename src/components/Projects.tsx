@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const featured = [
   {
     title: "Adda – Social Media App",
@@ -15,7 +17,16 @@ const featured = [
     tags: ["Electron.js", "TypeScript", "React", "Tailwind CSS", "Express.js", "SQLite", "Socket.IO"],
     github: "https://github.com/akashdeep-majumder/scoring_app",
     live: null,
-    note: "vibe-coded with AI",
+    note: "Built with AI-assisted development",
+  },
+  {
+    title: "TestAI — AI-Powered Test Automation",
+    description:
+      "Generates Playwright E2E test scripts directly from source code using LLM APIs (OpenRouter, Google, Nvidia, Mistral). The key engineering challenge was deterministic output — solved by constraining the model through structured response schemas and strict output contracts rather than relying on prompt wording alone.",
+    tags: ["LLM APIs", "Playwright", "Node.js", "OAuth"],
+    github: "https://github.com/akashdeep-majumder/testai",
+    live: null,
+    note: null,
   },
 ];
 
@@ -51,18 +62,27 @@ export default function Projects() {
     <section id="projects" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Featured */}
-        <h2 className="text-3xl font-bold mb-3 text-center">Projects</h2>
-        <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 mb-12">
-          Personal builds — outside of work.
-        </p>
+        <Reveal>
+          <h2 className="text-3xl font-bold mb-3 text-center">Projects</h2>
+          <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 mb-12">
+            Personal builds — outside of work.
+          </p>
+        </Reveal>
 
         <div className="mb-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-4">
+          <Reveal
+            as="p"
+            className="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-4"
+          >
             Featured
-          </p>
+          </Reveal>
           <div className="flex flex-col gap-4">
-            {featured.map((p) => (
-              <div key={p.title} className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:border-indigo-400 transition-colors">
+            {featured.map((p, i) => (
+              <Reveal
+                key={p.title}
+                delay={i * 70}
+                className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:border-indigo-400 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-200"
+              >
                 <div className="h-1.5 bg-linear-to-r from-indigo-500 to-purple-500" />
                 <div className="p-8">
                   <h3 className="text-xl font-bold mb-4">{p.title}</h3>
@@ -107,23 +127,24 @@ export default function Projects() {
                     {p.note && <span className="text-xs text-zinc-400">· {p.note}</span>}
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
 
         {/* Others */}
-        <div className="mb-4">
+        <Reveal as="div" className="mb-4">
           <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
             Other Projects
           </p>
           <p className="text-xs text-zinc-400 mt-1">Learning projects and earlier work.</p>
-        </div>
+        </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {others.map((p) => (
-            <div
+          {others.map((p, i) => (
+            <Reveal
               key={p.title}
-              className="flex flex-col bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:border-indigo-400 transition-colors"
+              delay={i * 70}
+              className="flex flex-col bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:border-indigo-400 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-200"
             >
               <div className="h-1 bg-linear-to-r from-indigo-500 to-purple-500" />
               <div className="flex flex-col flex-1 p-5">
@@ -170,20 +191,20 @@ export default function Projects() {
                   )}
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        <div className="text-center mt-10">
+        <Reveal as="div" className="text-center mt-10">
           <a
             href="https://github.com/akashdeep-majumder"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-sm font-medium hover:border-indigo-500 hover:text-indigo-500 transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-sm font-medium hover:border-indigo-500 hover:text-indigo-500 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
           >
             View more on GitHub →
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

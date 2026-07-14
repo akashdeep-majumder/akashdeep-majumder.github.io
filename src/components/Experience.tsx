@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Reveal from "./Reveal";
 
 const roles = [
   {
     company: "Thedush Robotics",
     role: "Software Engineer",
-    period: "Jun 2023 – Apr 2026",
+    period: "Mar 2023 – Apr 2026",
     recognition: {
       title: "Mighty Owleyes",
       caption: "For someone with deep wisdom and foresight",
@@ -17,7 +18,7 @@ const roles = [
       {
         name: "ONIX – Robot Telemetry & Visualization",
         brief:
-          "High-performance robot control dashboard for Autonomous Mobile Robots (AMRs) — live telemetry, map editing, SLAM mapping, task execution, and LiDAR visualization over ROS2. Started with a Canvas 2D renderer; migrated to React Three Fiber when larger warehouse environments pushed the pipeline past smooth frame rates.",
+          "Real-time robot telemetry and visualization platform for Autonomous Mobile Robots — live sensor data, map editing, SLAM mapping, task execution, and a LiDAR point-cloud visualizer over ROS2. The LiDAR work was two separate engineering problems. Canvas 2D couldn't handle dense warehouse maps, so I migrated to React Three Fiber for GPU-accelerated rendering. Frame rate was still stuck at 5 FPS after that — the bottleneck was bandwidth, not rendering. Chose WebSocket with Float16 + Deflate compression over WebRTC after testing both. Bandwidth dropped from 1.5 MB to 100 KB per frame and throughput rose to 50+ FPS.",
         bullets: [
           "Optimized LiDAR data streaming with Float16 + Deflate compression, cutting bandwidth by ~93% (1.5 MB → 100 KB) and lifting render from 5 FPS to 50+",
           "Built an Immer-based undo-redo system using patch-based state diffing — ~90% reduction in memory usage vs. the previous full-snapshot approach",
@@ -81,7 +82,7 @@ function ProjectCard({ project }: { project: (typeof roles)[0]["projects"][0] })
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+    <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:border-indigo-400 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-200">
       <div className="h-1 bg-linear-to-r from-indigo-500 to-purple-500" />
       <div className="p-5">
         <h4 className="font-semibold mb-2">{project.name}</h4>
@@ -131,10 +132,12 @@ export default function Experience() {
   return (
     <section id="experience" className="py-24 px-6 bg-zinc-50 dark:bg-zinc-950">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold mb-3 text-center">Experience</h2>
-        <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 mb-14">
-          3+ years building real-time systems and robotics interfaces at Thedush.
-        </p>
+        <Reveal>
+          <h2 className="text-3xl font-bold mb-3 text-center">Experience</h2>
+          <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 mb-14">
+            3 years building real-time systems and robotics interfaces at Thedush.
+          </p>
+        </Reveal>
 
         <div className="flex flex-col gap-14">
           {roles.map((r, i) => (
@@ -148,8 +151,10 @@ export default function Experience() {
               </div>
 
               <div className="flex flex-col gap-4">
-                {r.projects.map((p) => (
-                  <ProjectCard key={p.name} project={p} />
+                {r.projects.map((p, j) => (
+                  <Reveal key={p.name} delay={j * 70}>
+                    <ProjectCard project={p} />
+                  </Reveal>
                 ))}
               </div>
 
