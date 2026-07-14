@@ -12,7 +12,7 @@ const roles = [
     recognition: {
       title: "Mighty Owleyes",
       caption: "For someone with deep wisdom and foresight",
-      image: "/thedush-award.jpeg",
+      image: "/thedush-award.webp",
     },
     projects: [
       {
@@ -21,11 +21,14 @@ const roles = [
           "Real-time robot telemetry and visualization platform for Autonomous Mobile Robots — live sensor data, map editing, SLAM mapping, task execution, and a LiDAR point-cloud visualizer over ROS2. The LiDAR work was two separate engineering problems. Canvas 2D couldn't handle dense warehouse maps, so I migrated to React Three Fiber for GPU-accelerated rendering. Frame rate was still stuck at 5 FPS after that — the bottleneck was bandwidth, not rendering. Chose WebSocket with Float16 + Deflate compression over WebRTC after testing both. Bandwidth dropped from 1.5 MB to 100 KB per frame and throughput rose to 50+ FPS.",
         bullets: [
           "Optimized LiDAR data streaming with Float16 + Deflate compression, cutting bandwidth by ~93% (1.5 MB → 100 KB) and lifting render from 5 FPS to 50+",
+          "Designed a centralized map management system with a normalized schema, eliminating a recurring class of hard-to-trace bugs caused by each feature maintaining its own map structure",
+          "Built a map merge workflow handling 3 independent coordinate systems (canvas, map origin, merge/rotate space) with custom transformation math — operators align, rotate, and translate maps visually; coordinates are recalculated on save",
           "Built an Immer-based undo-redo system using patch-based state diffing — ~90% reduction in memory usage vs. the previous full-snapshot approach",
           "Real-time dynamic mapping and collision detection over WebSockets, FastAPI, and ROS2 (Humble)",
           "Developed a robot task manager for operational control of AMR navigation goals",
           "Migrated the backend from Django with unstructured WebSocket scripts to an organised FastAPI architecture; cut Docker image sizes via multi-stage builds",
           "Refactored the frontend from a page-based structure to feature-based modules as the codebase grew — the page-based approach had become difficult to maintain, with logic and components tangled across pages and duplication spreading with every new feature",
+          "Mentored 5–6 interns through code reviews over 3 years",
         ],
         tags: ["React 18", "Three.js / R3F", "Redux Toolkit", "WebSockets", "FastAPI", "MySQL", "Redis", "WebGL"],
         expandable: true,

@@ -8,10 +8,10 @@ export default function About() {
         <Reveal className="flex justify-center sm:justify-start">
           <div className="w-full max-w-sm rounded-2xl overflow-hidden ring-1 ring-zinc-200 dark:ring-zinc-800">
             <Image
-              src="/at-work.jpeg"
+              src="/at-work.webp"
               alt="Akashdeep working at his desk"
-              width={400}
-              height={280}
+              width={1100}
+              height={623}
               className="w-full h-auto"
             />
           </div>

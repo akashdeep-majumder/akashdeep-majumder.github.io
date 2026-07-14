@@ -45,3 +45,7 @@ CLAUDE.md
 AGENTS.md
 project.md
 .claude/
+
+# performance audit exports (Lighthouse / DevTools traces)
+Trace-*.json.gz
+akashdeep-majumder.github.io-*.json

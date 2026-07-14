@@ -35,6 +35,7 @@ export default function Contact() {
     <section id="contact" className="py-24 px-6 bg-zinc-50 dark:bg-zinc-950">
       <Reveal className="max-w-xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
+        <p className="text-sm text-zinc-400 dark:text-zinc-500 mb-4">Based in Bangalore, India</p>
         <p className="text-zinc-500 dark:text-zinc-400 mb-10">
           Open to new opportunities. Whether you have a role, a project, or
           just want to chat — feel free to reach out.

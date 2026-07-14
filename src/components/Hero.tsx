@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="max-w-2xl text-center">
         <Reveal className="mx-auto mb-6 w-20 h-20 rounded-full overflow-hidden ring-2 ring-zinc-200 dark:ring-zinc-700">
           <Image
-            src="/profile.png"
+            src="/profile.webp"
             alt="Akashdeep Majumder"
             width={80}
             height={80}

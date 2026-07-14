@@ -4,7 +4,7 @@ const featured = [
   {
     title: "Adda – Social Media App",
     description:
-      "Full-stack MERN social media app. JWT auth via HTTP-only cookies, Zod-validated Express REST API, and MongoDB on the backend. Next.js 16 App Router frontend with Redux Toolkit for optimistic UI (instant like/comment updates with silent rollback), IntersectionObserver infinite scroll, and Tailwind CSS v4 design tokens for a single-override light/dark theme. Deployed on Vercel + Render.",
+      "Full-stack MERN social media app. JWT auth via HTTP-only cookies, Zod-validated Express REST API, and MongoDB on the backend. Next.js 16 App Router frontend with Redux Toolkit for optimistic UI (instant like/comment updates with silent rollback), IntersectionObserver infinite scroll, and Tailwind CSS v4 design tokens for a single-override light/dark theme. SSR for authenticated feeds, SSG for public pages — chosen per-route by data freshness needs. Core Web Vitals optimized to green via Lighthouse. Deployed on Vercel + Render.",
     tags: ["Next.js 16", "React", "TypeScript", "Tailwind CSS v4", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "JWT", "Zod"],
     github: "https://github.com/akashdeep-majumder/social-media-mern",
     live: "https://project-adda.vercel.app",
