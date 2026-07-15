@@ -44,6 +44,8 @@ next-env.d.ts
 CLAUDE.md
 AGENTS.md
 project.md
+DESIGN.md
+AI-ASSISTANT-PLAN.md
 .claude/
 
 # performance audit exports (Lighthouse / DevTools traces)
