@@ -175,7 +175,7 @@ export default function Experience() {
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-6">
                 <div>
                   <h3 className="text-xl font-semibold">{r.role}</h3>
-                  <p className="text-indigo-500 font-medium text-sm">
+                  <p className="text-indigo-600 dark:text-indigo-400 font-medium text-sm">
                     {r.company}
                   </p>
                 </div>

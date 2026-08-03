@@ -2,6 +2,24 @@
 
 import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
 
+const callbacks = new WeakMap<Element, () => void>();
+let observer: IntersectionObserver | null = null;
+
+function getObserver() {
+  observer ??= new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        callbacks.get(entry.target)?.();
+        callbacks.delete(entry.target);
+        observer?.unobserve(entry.target);
+      }
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+  );
+  return observer;
+}
+
 type RevealProps = {
   children: ReactNode;
   className?: string;
@@ -23,18 +41,14 @@ export default function Reveal({ children, className, delay = 0, as: Tag = "div"
     const el = ref.current;
     if (!el) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
-    );
+    const io = getObserver();
+    callbacks.set(el, () => setVisible(true));
+    io.observe(el);
 
-    observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      callbacks.delete(el);
+      io.unobserve(el);
+    };
   }, []);
 
   return (

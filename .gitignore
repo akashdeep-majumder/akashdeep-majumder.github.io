@@ -51,3 +51,6 @@ AI-ASSISTANT-PLAN.md
 # performance audit exports (Lighthouse / DevTools traces)
 Trace-*.json.gz
 akashdeep-majumder.github.io-*.json
+
+# full-resolution image sources (only the optimized derivatives ship in public/)
+assets-src/
